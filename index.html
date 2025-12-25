@@ -1,308 +1,356 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LUCKY INFO & CONTACT</title>
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: black;
-      color: white;
-      font-family: 'Poppins', sans-serif;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: 0;
-      padding: 0;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUCKY INFO & CONTACT</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
 
-    h1 {
-      border-bottom: 2px solid rgb(226, 5, 5);
-      padding-bottom: 10px;
-      margin: 30px 0 20px 0;
-      text-transform: uppercase;
-      text-align: center;
-      animation: fadeIn 1.5s ease-in-out;
-    }
+        h1 {
+            border-bottom: 2px solid rgb(226, 5, 5);
+            padding-bottom: 10px;
+            margin: 30px 0 20px 0;
+            text-transform: uppercase;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
 
-    /* Info Boxes */
-    .box {
-      border: 2px solid rgb(110, 0, 0);
-      padding: 15px 30px;
-      margin: 10px;
-      border-radius: 10px;
-      font-size: 22px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: 0.3s;
-      max-width: 900px;
-      animation: slideUp 0.8s ease-out forwards;
-      opacity: 0;
-    }
+        /* Info Boxes */
+        .box {
+            border: 2px solid rgb(110, 0, 0);
+            padding: 15px 30px;
+            margin: 10px;
+            border-radius: 10px;
+            font-size: 22px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            max-width: 900px;
+            animation: slideUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
 
-    .box:nth-child(2) { animation-delay: 0.1s; } /* Adjusted delays since first is now hidden */
-    .box:nth-child(3) { animation-delay: 0.2s; }
-    .box:nth-child(4) { animation-delay: 0.3s; }
-    .box:nth-child(5) { animation-delay: 0.4s; }
-    .box:nth-child(6) { animation-delay: 0.5s; }
-    .box:nth-child(7) { animation-delay: 0.6s; }
-    .box:nth-child(8) { animation-delay: 0.7s; }
-    .box:nth-child(9) { animation-delay: 0.8s; }
+        .box:nth-child(2) {
+            animation-delay: 0.1s;
+        }
 
-    .box:hover {
-      background-color: rgb(203, 218, 190);
-      color: black;
-      transform: scale(1.05);
-    }
+        /* Adjusted delays since first is now hidden */
+        .box:nth-child(3) {
+            animation-delay: 0.2s;
+        }
 
-    /* Special message box */
-    .message-box {
-      text-transform: none;
-      font-size: 16px;
-      line-height: 1.4;
-      white-space: pre-wrap;
-      animation: slideUp 0.9s ease-out forwards;
-      opacity: 0;
-      animation-delay: 0.9s;
-    }
+        .box:nth-child(4) {
+            animation-delay: 0.3s;
+        }
 
-    /* Highlight important words in message */
-    .message-box span.imp {
-      color: #ff3333;
-      font-weight: bold;
-    }
-    .message-box span.warning {
-      color: #ff6666;
-      font-weight: bold;
-    }
-    .message-box span.urgent {
-      color: #ff0000;
-      font-weight: bold;
-      animation: pulse 2s infinite;
-    }
+        .box:nth-child(5) {
+            animation-delay: 0.4s;
+        }
 
-    /* Password Protection Styles */
-    #password-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-    }
+        .box:nth-child(6) {
+            animation-delay: 0.5s;
+        }
 
-    #password-screen h2 {
-      color: rgb(226, 5, 5);
-      margin-bottom: 30px;
-      font-size: 28px;
-      text-transform: uppercase;
-    }
+        .box:nth-child(7) {
+            animation-delay: 0.6s;
+        }
 
-    #password-input {
-      padding: 12px 20px;
-      font-size: 18px;
-      border: 2px solid rgb(226, 5, 5);
-      border-radius: 8px;
-      background-color: black;
-      color: white;
-      width: 250px;
-      text-align: center;
-    }
+        .box:nth-child(8) {
+            animation-delay: 0.7s;
+        }
 
-    #password-btn {
-      margin-top: 20px;
-      background-color: rgb(226, 5, 5);
-      color: white;
-      padding: 12px 30px;
-      font-size: 18px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-    }
+        .box:nth-child(9) {
+            animation-delay: 0.8s;
+        }
 
-    #password-btn:hover {
-      background-color: white;
-      color: black;
-    }
+        .box:hover {
+            background-color: rgb(203, 218, 190);
+            color: black;
+            transform: scale(1.05);
+        }
 
-    #error-msg {
-      color: #ff6666;
-      margin-top: 15px;
-      font-size: 16px;
-    }
+        /* Special message box */
+        .message-box {
+            text-transform: none;
+            font-size: 16px;
+            line-height: 1.4;
+            white-space: pre-wrap;
+            animation: slideUp 0.9s ease-out forwards;
+            opacity: 0;
+            animation-delay: 0.9s;
+        }
 
-    /* Contact Section */
-    .contact-section {
-      margin-top: 40px;
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 2px solid rgb(110, 0, 0);
-      width: 100%;
-      animation: fadeIn 2s ease-in-out;
-    }
+        /* Highlight important words in message */
+        .message-box span.imp {
+            color: #ff3333;
+            font-weight: bold;
+        }
 
-    .contact-box {
-      border: 2px solid rgb(110, 0, 0);
-      border-radius: 15px;
-      padding: 25px 40px;
-      text-align: center;
-      max-width: 500px;
-      margin: 0 auto;
-    }
+        .message-box span.warning {
+            color: #ff6666;
+            font-weight: bold;
+        }
 
-    .contact-box p {
-      font-size: 16px;
-      margin-bottom: 20px;
-      color: rgb(230, 230, 230);
-      text-transform: none;
-    }
+        .message-box span.urgent {
+            color: #ff0000;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
 
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
+        /* Password Protection Styles */
+        #password-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
 
-    .social-icons a {
-      color: white;
-      font-size: 35px;
-      transition: 0.3s;
-    }
+        #password-screen h2 {
+            color: rgb(226, 5, 5);
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-transform: uppercase;
+        }
 
-    .social-icons a:hover {
-      color: rgb(226, 5, 5);
-      transform: scale(1.2) rotate(10deg);
-    }
+        #password-input {
+            padding: 12px 20px;
+            font-size: 18px;
+            border: 2px solid rgb(226, 5, 5);
+            border-radius: 8px;
+            background-color: black;
+            color: white;
+            width: 250px;
+            text-align: center;
+        }
 
-    button {
-      background-color: rgb(226, 5, 5);
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 12px 25px;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        #password-btn {
+            margin-top: 20px;
+            background-color: rgb(226, 5, 5);
+            color: white;
+            padding: 12px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
 
-    button:hover {
-      background-color: white;
-      color: black;
-      transform: scale(1.05);
-    }
+        #password-btn:hover {
+            background-color: white;
+            color: black;
+        }
 
-    footer {
-      margin-top: 40px;
-      text-align: center;
-      font-size: 14px;
-      opacity: 0.8;
-      padding-bottom: 20px;
-      animation: fadeIn 2.5s ease-in-out;
-    }
+        #error-msg {
+            color: #ff6666;
+            margin-top: 15px;
+            font-size: 16px;
+        }
 
-    /* Animations */
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+        /* Contact Section */
+        .contact-section {
+            margin-top: 40px;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 2px solid rgb(110, 0, 0);
+            width: 100%;
+            animation: fadeIn 2s ease-in-out;
+        }
 
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        .contact-box {
+            border: 2px solid rgb(110, 0, 0);
+            border-radius: 15px;
+            padding: 25px 40px;
+            text-align: center;
+            max-width: 500px;
+            margin: 0 auto;
+        }
 
-    @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
-    }
-  </style>
+        .contact-box p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: rgb(230, 230, 230);
+            text-transform: none;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 35px;
+            transition: 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: rgb(226, 5, 5);
+            transform: scale(1.2) rotate(10deg);
+        }
+
+        button {
+            background-color: rgb(226, 5, 5);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: white;
+            color: black;
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            opacity: 0.8;
+            padding-bottom: 20px;
+            animation: fadeIn 2.5s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-  <!-- PASSWORD PROTECTION SCREEN -->
-  <div id="password-screen">
-    <h2>Enter Password</h2>
-    <input type="password" id="password-input" placeholder="Password here">
-    <button id="password-btn">Submit</button>
-    <p id="error-msg"></p>
-  </div>
-
-  <!-- MAIN CONTENT (Hidden until correct password) -->
-  <div id="main-content" style="display: none;">
-
-    <!-- INFO SECTION -->
-    <h1>and one more help</h1>
-
-    <div class="box">Freelancing</div>
-    <div class="box">NOTTES PROVIDES</div>
-    <div class="box">Video Editing</div>
-    <div class="box">Coding</div>
-    <div class="box">Web Dev for Student Quiz</div>
-    <div class="box">B.A to BCA (Student of Science)</div>
-    <div class="box">RRB NTPC UG</div>
-
-    <!-- USER MESSAGE BOX -->
-    <div class="box message-box">
-dekho yaar, mai aapse <span class="imp">face-to-face</span> to baat nahi kar sakta.
-mera <span class="warning">iraada galat mat samajhna</span>, plz.
-i understand that you parent trust on you .
-agar aap <span class="imp">message nahi kar sakte</span>, no problem.
-hum aapko bas upar mein jo bataye the, woh batana chahte the.
-jo kaam tha wo upper me bata diye jo ham karne wale hai kab kare ye nahi batye ge 
-toh aap mera IG login kar ke <span class="urgent">message kar dena</span>  if possible — agar aap na kar paayein bhi, to no problem.
-ise <span class="urgent">SR_29</span> pe.
-both accounts are mine, <span class="imp">don’t worry</span>.
-dont warry i will <span class="warning">delete ig in 2025 on 27-12</span>
- mera kaam to ho gaya, bas kuch <span class="warning">legal ya illegal</span> ki baat karni thi bass.
-
-baki yaar plz aaj ke bad <span class="urgent">face to face bat mat karna</span> plz 
-and <span class="urgent">dont complent</span> 
-
-                   thank you bye
-
+    <!-- PASSWORD PROTECTION SCREEN -->
+    <div id="password-screen">
+        <h2>Enter Password</h2>
+        <input type="password" id="password-input" placeholder="Password here">
+        <button id="password-btn">Submit</button>
+        <p id="error-msg"></p>
     </div>
 
-    <!-- CONTACT SECTION -->
-    <div class="contact-section">
-      <h1>Contact Me</h1>
+    <!-- MAIN CONTENT (Hidden until correct password) -->
+    <div id="main-content" style="display: none;">
 
-      <div class="contact-box">
-        <p>Let's connect! You can reach me through the platforms below 👇</p>
-        <p>IG: rlsp_yadav9143 (password removed for safety)</p>
+        <!-- INFO SECTION -->
+        <h1>and one more help</h1>
 
-        <div class="social-icons">
-          <a href="https://wa.me/918969884164?text=Hello%20Lucky%2C%20I%20want%20to%20connect%20with%20you" target="_blank"><i class='bx bxl-whatsapp'></i></a>
-          <a href="https://t.me/9798680204" target="_blank"><i class='bx bxl-telegram'></i></a>
-          <a href="https://www.instagram.com/rlsp_yadav9143" target="_blank"><i class='bx bxl-instagram'></i></a>
-          <a href="mailto:rajyadav23022025@gmail.com" target="_blank"><i class='bx bxl-gmail'></i></a>
+        <div class="box">Freelancing</div>
+        <div class="box">NOTTES PROVIDES</div>
+        <div class="box">Video Editing</div>
+        <div class="box">Coding</div>
+        <div class="box">Web Dev for Student Quiz</div>
+        <div class="box">B.A to BCA (Student of Science galti se ba ho gaya tha)</div>
+        <div class="box">RRB NTPC UG</div>
+
+        <!-- USER MESSAGE BOX -->
+        <div class="box message-box">
+            dekho yaar, mai aapse <span class="imp">face-to-face</span> to baat nahi kar sakta.
+            mera <span class="warning">iraada galat mat samajhna</span>, plz.
+            i understand that you parent trust on you .
+            agar aap <span class="imp">message nahi kar sakte</span>, no problem.
+            hum aapko bas upar mein jo bataye the, woh batana chahte the.
+            jo kaam tha wo upper me bata diye jo ham karne wale hai kab kare ye nahi batye ge
+            toh aap mera IG login kar ke <span class="urgent">message kar dena</span> if possible — agar aap na kar
+            paayein bhi, to no problem.
+            ise <span class="urgent">SR_29</span> pe.
+            both accounts are mine, <span class="imp">don’t worry</span>.
+            dont warry i will <span class="warning">delete ig in 2025 on 27-12</span>
+            mera kaam to ho gaya, bas kuch <span class="warning">legal ya illegal</span> ki baat karni thi bass.
+
+            baki yaar plz aaj ke bad <span class="urgent">face to face bat mat karna</span> plz
+            and <span class="urgent">dont complent</span>
+
+            thank you bye
+
         </div>
 
-        <button onclick="window.open('https://wa.me/918969884164?text=Hello%20Lucky%2C%20I%20want%20to%20talk%20about%20your%20project', '_blank')">
-          <i class='bx bx-send'></i> Message
-        </button>
-      </div>
+        <!-- CONTACT SECTION -->
+        <div class="contact-section">
+            <h1>Contact</h1>
+
+            <div class="contact-box">
+                <p>Let's connect! You can reach me through the platforms below 👇</p>
+                <p>IG: rlsp_yadav9143 (ig password :- yadav@28)</p>
+
+                <div class="social-icons">
+                    <a href="https://wa.me/918969884164?text=Hello%20Lucky%2C%20I%20want%20to%20connect%20with%20you"
+                        target="_blank"><i class='bx bxl-whatsapp'></i></a>
+                    <a href="https://t.me/9798680204" target="_blank"><i class='bx bxl-telegram'></i></a>
+                    <a href="https://www.instagram.com/rlsp_yadav9143" target="_blank"><i
+                            class='bx bxl-instagram'></i></a>
+                    <a href="mailto:rajyadav23022025@gmail.com" target="_blank"><i class='bx bxl-gmail'></i></a>
+                </div>
+
+                <button
+                    onclick="window.open('https://wa.me/918969884164?text=Hello%20Lucky%2C%20I%20want%20to%20talk%20about%20your%20project', '_blank')">
+                    <i class='bx bx-send'></i> Message
+                </button>
+            </div>
+        </div>
+
+        <footer>© 2025 | Made with ❤️ by Lucky</footer>
     </div>
 
-    <footer>© 2025 | Made with ❤️ by Lucky</footer>
-  </div>
+<script>
+    // Multiple correct passwords
+    const correctPasswords = ["7", "45"]; // Yahan aur passwords add kar sakte ho
 
-  <script>
-    const correctPassword = "45"; // Yeh password hai
     const passwordInput = document.getElementById("password-input");
     const passwordBtn = document.getElementById("password-btn");
     const errorMsg = document.getElementById("error-msg");
@@ -310,22 +358,23 @@ and <span class="urgent">dont complent</span>
     const mainContent = document.getElementById("main-content");
 
     passwordBtn.addEventListener("click", () => {
-      if (passwordInput.value === correctPassword) {
-        passwordScreen.style.display = "none";
-        mainContent.style.display = "block";
-      } else {
-        errorMsg.textContent = "Wrong password! Try again.";
-        passwordInput.value = "";
-      }
+        // Check karo ki entered password correctPasswords array mein hai ya nahi
+        if (correctPasswords.includes(passwordInput.value.trim())) {
+            passwordScreen.style.display = "none";
+            mainContent.style.display = "block";
+        } else {
+            errorMsg.textContent = "Wrong password! Try again.";
+            passwordInput.value = "";
+        }
     });
 
     // Enter key se bhi submit ho jaye
     passwordInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        passwordBtn.click();
-      }
+        if (e.key === "Enter") {
+            passwordBtn.click();
+        }
     });
-  </script>
-
+</script>
 </body>
+
 </html>
